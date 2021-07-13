@@ -1,0 +1,163 @@
+% A lot of imported packages
+
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[ % Define your margins here
+    a4paper,
+    left=3.5cm,
+    right=3.5cm,
+    bottom=5cm,
+    textheight=550pt,
+    footskip=50pt
+    ]{geometry}
+\usepackage[english]{babel}
+\linespread{1.15}
+
+\usepackage{pdfpages}
+\usepackage{fancyhdr}
+\usepackage{tikz}
+\usepackage{booktabs}
+\usetikzlibrary{calc}
+\usepackage{graphicx}
+\usepackage{newtxtext}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{float}
+\usepackage{comment}
+\usepackage{listings}
+\usepackage{tabto}
+\usepackage{multirow}
+\usepackage{tabularx}
+\usepackage{parskip}
+\usepackage[printonlyused,withpage]{acronym}
+\usepackage{listings}
+\usepackage{csquotes}
+\usepackage{hyperref}
+
+
+
+\usepackage[
+backend=biber,
+sorting=ynt
+]{biblatex}
+
+\addbibresource{Bibliography.bib} % the file with bibliography info
+
+\definecolor{internlink}{RGB}{77,114,141}
+\definecolor{navy}{RGB}{0, 0, 128}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\hypersetup{ % define the color of hyperlinks
+    colorlinks=true,
+    linkcolor= black,
+    filecolor=black,
+    urlcolor=navy,
+    citecolor=cyan
+}
+
+% Below is the definition of the style used for the JAVASCRIPT code listings
+% You can modify, but the current setup is nice. 
+% To use it, do \begin{lstlisting}[language=JavaScript]
+\definecolor{lightgray}{rgb}{.9,.9,.9}
+\definecolor{darkgray}{rgb}{.4,.4,.4}
+\definecolor{purple}{rgb}{0.65, 0.12, 0.82}
+\lstdefinelanguage{JavaScript}{
+  keywords={break, case, catch, continue, debugger, default, delete, do, else, false, finally, for, function, if, in, instanceof, new, null, return, switch, this, throw, true, try, typeof, var, void, while, with},
+  morecomment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]',
+  morestring=[b]",
+  ndkeywords={class, export, boolean, throw, implements, import, this, Grid, Button, Typography, div, Link, React},
+  keywordstyle=\color{blue}\bfseries,
+  ndkeywordstyle=\color{codepurple}\bfseries,
+  identifierstyle=\color{black},
+  commentstyle=\color{purple}\ttfamily,
+  stringstyle=\color{red}\ttfamily,
+  sensitive=true
+}
+
+% This is the default style for listings. 
+% It matches Python syntax highlighting
+\lstdefinestyle{mystyle}{
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{blue},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=4
+}
+\lstset{style=mystyle}
+
+% This sets the path to the 'Figures' folder so we can more easily use the command \includegraphics
+\graphicspath{ {./Figures/} }
+
+% i don't remember what this does lol
+\newenvironment{myfont}{\fontfamily{phv}\selectfont}{\par}
+
+
+
+% various options for the headers and footers
+\pagestyle{fancy}
+\setlength{\headheight}{14.5pt}
+\setlength{\footskip}{60pt}
+\fancyhf{}
+%\chead{\leftmark} % Titre de la section
+%\rfoot{\thepage}
+%\lfoot{\Authors}
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{1pt}
+\fancyhead[L]{\textit{\small \rightmark}}
+\fancyhead[R]{Project name}
+\fancyfoot[L]{\includegraphics[width=0.2\textwidth]{footer_logo.png}}
+\fancyfoot[C]{\leavevmode\raise3.5ex\hbox{\thepage}} % adjust the 3.5ex to your needs
+\fancyfoot[R]{\leavevmode\raise3.5ex\hbox{\Authors}} % adjust the 3.5ex to your needs
+
+
+
+
+
+% -----------------------------------------------------------------
+
+\begin{document}
+
+\pagenumbering{gobble} % this removes page numbering until reactivated 
+\include{Complements/Cover_page}
+\include{Complements/Acknowledgements}
+\include{Complements/Warning}
+\tableofcontents
+
+
+\pagenumbering{arabic} % activates page numbering
+\include{Sections/Introduction}
+\include{Sections/Company}
+\include{Sections/Work}
+\include{Sections/Conclusion}
+
+
+\include{Annexes/Annex1}
+
+
+\listoffigures
+\listoftables
+\lstlistoflistings
+\addcontentsline{toc}{section}{Bibliography}
+\printbibliography
+\include{Complements/Acronyms}
+\include{Complements/Glossary}
+
+\pagenumbering{gobble} % de-activate page numbering
+\include{Complements/Abstract}
+
+
+\end{document}
