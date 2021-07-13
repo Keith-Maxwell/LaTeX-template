@@ -1,0 +1,7 @@
+# ignore all auxiliary files
+*.aux
+# ignore all variations of the main file
+main.*
+# except for the .tex file (obviously) and the pdf file (to have a preview)
+!main.tex
+!main.pdf
